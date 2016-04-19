@@ -1,0 +1,9 @@
+**.DS_Store
+**.sass-cache
+**__pycache__/
+**/*.map
+node_modules/
+**/settings.py
+**/fixtures/
+**/testLogs/
+**/*.pyc
