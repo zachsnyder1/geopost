@@ -1,0 +1,73 @@
+{% extends 'projects/base_projects.html' %}
+{% load staticfiles %}
+{% block localhead %}
+<link rel="stylesheet" type="text/css"
+href="{% static 'geopost/home.min.css' %}">
+<link rel="stylesheet" type="text/css"
+href="{% static 'geopost/ol.min.css' %}">
+<script type="text/javascript" src="{% static 'geopost/ol.js' %}"></script>
+{% if user.is_authenticated %}
+<script type="text/javascript" 
+src="{% static 'geopost/home_authenticated_concat.js' %}"></script>
+{% else %}
+<script type="text/javascript" 
+src="{% static 'geopost/home_anonymous_concat.js' %}"></script>
+{% endif %}
+{% endblock %}
+{% block content %}
+<div id="map">
+  {% if user.is_authenticated %}
+  <!-- Map Toolbar -->
+  <div id="toolbar-wrapper">
+    <div id="toolbar-toggle">
+      <p>+</p>
+    </div> <!-- #toolbar-toggle -->
+    <div id="toolbar">
+      <a href="{% url 'geopost_entry' %}">
+        <button type="button" class="btn btn-success toolbar-btn">
+          New Entry
+        </button>
+      </a>
+    </div> <!-- #toolbar -->
+    <div id="toolbar-base">
+    </div>
+  </div> <!-- #toolbar-wrapper -->
+  {% endif %}
+</div>
+<!-- The blog entries are displayed in a modal -->
+<div id="info" class="modal fade bs-example-modal-lg" tabindex="-1"
+role="dialog" aria-labelledby="entrydetails">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div id="geopost-entry" data-geopost-entry="{% url 'geopost_entry' %}"></div>
+        <h2 id="title"></h2>
+        <p id="body"></p>
+        <img id="photo" src="">
+      </div> <!-- .modal-body -->
+      <div class="modal-footer">
+        {% if user.is_authenticated %}
+        <div class="btn-group" role="group">
+          <button id="edit-btn" type="button" class="btn btn-success">
+            Edit
+          </button>
+          <button id="delete-btn" type="button" class="btn btn-danger" data-dismiss="modal">
+            Delete
+          </button>
+        </div> <!-- .btn-group -->
+        <form id="delete-form" method="post" action="{% url 'geopost_delete' %}"
+enctype="multipart/form-data">
+          {% csrf_token %}
+          <input id="wfsxmlInput" type="hidden" name="wfsxml">
+          <input id="uuidInput" type="hidden" name="uuid">
+          <input type="submit" id="submit-btn">
+        </form>
+        {% endif %}
+        <button id="close-btn" type="button" class="btn btn-default" data-dismiss="modal">
+          Close
+        </button>
+      </div> <!-- .modal-footer -->
+    </div> <!-- .modal-content -->
+  </div> <!-- .modal-dialog -->
+</div> <!-- .modal --> 
+{% endblock %}

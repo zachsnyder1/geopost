@@ -1,0 +1,62 @@
+{% extends 'projects/base_projects.html' %}
+{% load staticfiles %}
+{% block localhead %}
+<link rel="stylesheet" type="text/css"
+href="{% static 'geopost/entry.min.css' %}">
+<link rel="stylesheet" type="text/css"
+href="{% static 'geopost/ol.min.css' %}">
+<script type="text/javascript" src="{% static 'geopost/ol.js' %}"></script>
+<script type="text/javascript" src="{% static 'geopost/uuid.js' %}"></script>
+<script type="text/javascript" src="{% static 'geopost/entry_concat.js' %}"></script>
+{% endblock %}
+{% block content %}
+<div id="map">
+  <!-- Map Toolbar -->
+  <div id="toolbar-wrapper">
+    <div id="toolbar-toggle">
+      <p>+</p>
+    </div> <!-- #toolbar-toggle -->
+    <div id="toolbar">
+        <button id="drawbtn" type="button" class="btn btn-success toolbar-btn">
+          Draw Point
+        </button>
+        <button id="modbtn" type="button" class="btn btn-success toolbar-btn">
+          Modify Point
+        </button>
+    </div> <!-- #toolbar -->
+    <div id="toolbar-base">
+    </div>
+  </div> <!-- #toolbar-wrapper -->
+</div>
+<div id="form-div" class="container-fluid">
+  <div class="row">
+    <div class="col-xs-1 col-sm-2 col-md-3 col-lg-4">
+    </div> <!-- .col-xs-1 -->
+    <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
+      <form id="the-form" method="post" action="{% url 'geopost_entry' %}"
+enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.fid.errors }}
+        <input id="wfsxml" type="hidden" name="wfsxml">
+        <input id="uuid" type="hidden" name="uuid">
+        <input id="fid" type="hidden" name="fid">
+        {{ form.title.errors }}
+        <label id="title-label" for="title"">Title: </label><br>
+        <input id="title" type="text" name="title" 
+value="{{ form.title.value|default_if_none:'' }}"><br>
+        {{ form.body.errors }}
+        <label id="body-label" for="body">Body: </label><br>
+        <textarea id="body" type="textbox" name="body">
+{{ form.body.value|default_if_none:'' }}</textarea><br>
+        {{ form.photo.errors }}
+        <label id="photo-label" for="photo">Your Photo: </label><br>
+        <input id="photo" type="file" name="photo"><br>
+        <input type="submit" id="submit-btn">
+      </form>
+      <button id="dummy-submit" class="btn btn-success">Done</button>
+    </div> <!-- .col-xs-10 -->
+    <div class="col-xs-1 col-sm-2 col-md-3 col-lg-4">
+    </div> <!-- .col-xs-1 -->
+  </div> <!-- .row -->
+</div> <!-- .container-fluid -->
+{% endblock %}
