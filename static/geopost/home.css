@@ -4947,14 +4947,14 @@ div.alt {
   display: none; }
 
 #hint-text {
-  background-color: #f3f3e7;
-  magin: 0px; }
+  background-color: #f3f3e7; }
   #hint-text p {
     text-align: center;
     color: #445566;
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
     width: 100%;
-    padding: 15px 0px; }
+    padding: 15px 0px;
+    margin: 0px auto; }
 
 #info h2 {
   text-align: center;
