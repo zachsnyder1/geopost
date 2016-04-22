@@ -4947,12 +4947,13 @@ div.alt {
   display: none; }
 
 #hint-text {
-  min-height: 20px;
-  background: white; }
+  background: #f3f3e7; }
   #hint-text p {
     text-align: center;
     color: #445566;
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 100%;
+    margin: 15px 0px; }
 
 #info h2 {
   text-align: center;
