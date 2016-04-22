@@ -15,6 +15,9 @@ src="{% static 'geopost/home_anonymous_concat.js' %}"></script>
 {% endif %}
 {% endblock %}
 {% block content %}
+<div id="hint-text">
+  <p>Click a point to view the entry!</p>
+</div>
 <div id="map">
   {% if user.is_authenticated %}
   <!-- Map Toolbar -->

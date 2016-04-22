@@ -4946,6 +4946,14 @@ div.alt {
 #delete-form {
   display: none; }
 
+#hint-text {
+  min-height: 20px;
+  background: white; }
+  #hint-text p {
+    text-align: center;
+    color: #445566;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
 #info h2 {
   text-align: center;
   color: #aa1133;
