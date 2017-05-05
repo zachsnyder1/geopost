@@ -16,7 +16,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='GeoPost',
             fields=[
-                ('uuid', models.UUIDField(editable=False, primary_key=True, serialize=False)),
+                ('uuid', models.UUIDField(editable=False,
+                                          primary_key=True, serialize=False)),
                 ('title', models.CharField(max_length=30)),
                 ('body', models.TextField()),
                 ('pub_time', models.DateTimeField(auto_now_add=True)),
