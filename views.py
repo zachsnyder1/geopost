@@ -6,6 +6,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import View
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
+from django.utils.encoding import smart_str
 from .forms import GeoPostForm
 from projects.models import Project
 from .view_helper import upload_to_bucket, delete_from_bucket, \
@@ -157,3 +158,18 @@ def photo(request, entry_uuid):
     resp.write(base64.b64encode(photo))
     resp['Content-Type'] = metadata['contentType']
     return resp
+
+@require_http_methods(["GET"])
+def vantechy(request):
+    """
+    Download pdf of VanTechy presentation slideshow.
+    """
+    download_file = 'presentation.pdf'
+    download_path = '/Home/zach/presentation.pdf'
+    response = HttpResponse(content_type='application/force-download')
+    response['Content-Disposition'] = 'attachment; filename={}'.
+                                       format(smart_str(download_file))
+    response['X_Sendfile'] = smart_str(download_path)
+    return response
+
+

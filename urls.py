@@ -7,5 +7,6 @@ urlpatterns = [
         url(r'^photo/(?P<entry_uuid>[0-9A-Fa-f-]+)$',
             views.photo,
             name="geopost_photo"),
-        url(r'^delete/$', views.delete, name='geopost_delete')
+        url(r'^delete/$', views.delete, name='geopost_delete'),
+        url(r'^vantechy/$', views.vantechy, name='geopost_vantechy')
 ]
