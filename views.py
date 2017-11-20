@@ -165,7 +165,7 @@ def vantechy(request):
     Download pdf of VanTechy presentation slideshow.
     """
     download_file = 'presentation.pdf'
-    download_path = '/Home/zach/presentation.pdf'
+    download_path = '/home/zach/presentation.pdf'
     response = HttpResponse(content_type='application/force-download')
     response['Content-Disposition'] = 'attachment; filename={}'.
                                        format(smart_str(download_file))
