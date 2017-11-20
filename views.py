@@ -167,7 +167,7 @@ def vantechy(request):
     """
     download_file = 'presentation.pdf'
     download_path = '/home/zach/presentation.pdf'
-    file_len = str(os.stat(download_path).statinfo.st_size)
+    file_len = str(os.stat(download_path).st_size)
     response = HttpResponse(content_type='application/force-download')
     response['Content-Disposition'] = 'attachment; filename={}' \
                                        .format(smart_str(download_file))
