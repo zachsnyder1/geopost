@@ -166,11 +166,11 @@ def vantechy(request):
     Download pdf of VanTechy presentation slideshow.
     """
     download_file = 'presentation.pdf'
-    download_path = '/home/zach/presentation.pdf'
+    download_path = '/tmp/{}'.format(download_file)
     file_len = str(os.stat(download_path).st_size)
     response = HttpResponse(content_type='application/force-download')
     response['Content-Disposition'] = 'attachment; filename="{}"' \
-                                       .format(smart_str(download_file))
+                                       .format(smart_str(download_file))              
     response['Content-Length'] = "{}".format(file_len)
     response['X_Sendfile'] = smart_str(download_path)
     return response
