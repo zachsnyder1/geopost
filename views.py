@@ -1,6 +1,7 @@
 import base64
 import os
-from django.http import HttpResponse, HttpResponseRedirect
+import io
+from django.http import HttpResponse, HttpResponseRedirect, FileResponse
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
@@ -165,14 +166,6 @@ def vantechy(request):
     """
     Download pdf of VanTechy presentation slideshow.
     """
-    download_file = 'presentation.pdf'
-    download_path = '/files/{}'.format(download_file)
-    file_len = str(os.stat(download_path).st_size)
-    response = HttpResponse(content_type='application/force-download')
-    response['Content-Disposition'] = 'attachment; filename="{}"' \
-                                       .format(smart_str(download_file))              
-    response['Content-Length'] = "{}".format(file_len)
-    response['X-SENDFILE'] = smart_str(download_path)
-    return response
+    return FileResponse(open('/files/presentation.pdf', 'rb'))
 
 
