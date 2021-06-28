@@ -1,6 +1,5 @@
 import base64
 import os
-import io
 from django.http import HttpResponse, HttpResponseRedirect, FileResponse
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
