@@ -1,5 +1,6 @@
 import base64
 import os
+import logging
 from django.http import HttpResponse, HttpResponseRedirect, FileResponse
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -13,6 +14,8 @@ from projects.models import Project
 from .view_helper import upload_to_bucket, delete_from_bucket, \
         post_to_geoserver, get_from_geoserver, download_from_bucket, \
         server_error
+
+logger = logging.getLogger(__name__)
 
 # CLASS BASED VIEWS
 
@@ -92,6 +95,7 @@ class Entry(LoginRequiredMixin, GeoPostBase):
         }
         # VALIDATE FORM
         form = GeoPostForm(data, request.FILES)
+        logger.info("\ninstantiate Geopost form\n")
         # IF FORM VALIDATION ERROR
         if not form.is_valid():
             context = self.getContext(form)

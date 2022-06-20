@@ -6,12 +6,14 @@ from django.http import HttpResponse
 from apiclient.http import MediaIoBaseUpload
 from oauth2client.client import GoogleCredentials
 
+from . import zlog
 
 def upload_to_bucket(file, bucket, mimetype, id):
     """
     SUCCESS: return None
     ERROR: return http error code
     """
+    zlog.zlog("begin upload")
     credentials = GoogleCredentials.get_application_default()
     service = apiclient.discovery.build(
         'storage', 'v1', credentials=credentials)
@@ -41,6 +43,7 @@ def upload_to_bucket(file, bucket, mimetype, id):
             else:
                 return e.resp.status
     # IF NO ERROR, RETURN NONE
+    zlog.zlog("upload successful")
     return None
 
 
