@@ -5,7 +5,7 @@ OL_OBJ = {};
 */
 OL_OBJ.wrksp = "geopost";
 OL_OBJ.featNs = "/" + OL_OBJ.wrksp;
-OL_OBJ.featType = "entries";
+OL_OBJ.featType = "entries2";
 OL_OBJ.defaultSRS = "EPSG:3857";
 OL_OBJ.ZSDomain = 'https://zach-site.com';
 OL_OBJ.GSDomain = 'https://zach-site.com';
@@ -136,7 +136,7 @@ try {
 		// ...MAKE THE MAP
 		OL_OBJ.map = new ol.Map({
 			target: 'map',
-			layers: [OL_OBJ.tile/*, OL_OBJ.entries*/],
+			layers: [OL_OBJ.tile, OL_OBJ.entries],
 			view: OL_OBJ.view,
 			interactions: [OL_OBJ.dragpan],
 			controls: ol.control.defaults({
