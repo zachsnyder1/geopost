@@ -407,8 +407,7 @@ $(document).ready(function () {
 		var wfsxml =  OL_OBJ.writeTrans([newpoint]);
 		wfsxmlInput.attr('value', wfsxml);
 		uuidInput.attr('value', OL_OBJ.entryUUID);
-		console.log("wfsxml:" + wfsxml);
-		//submitBtn.click();
+		submitBtn.click();
 	});
 	// Side bar opens/closes on click
 	$('#toolbar-toggle').on('click', function() {
