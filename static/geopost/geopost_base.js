@@ -136,7 +136,7 @@ try {
 		// ...MAKE THE MAP
 		OL_OBJ.map = new ol.Map({
 			target: 'map',
-			layers: [OL_OBJ.tile/*, OL_OBJ.entries*/],
+			layers: [OL_OBJ.tile, OL_OBJ.entries],
 			view: OL_OBJ.view,
 			interactions: [OL_OBJ.dragpan],
 			controls: ol.control.defaults({
