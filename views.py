@@ -99,7 +99,7 @@ class Entry(LoginRequiredMixin, GeoPostBase):
         logger.info("\ninstantiate Geopost form\n")
         # IF FORM VALIDATION ERROR
         if not form.is_valid():
-            return server_error(json.dumps(data))
+            return server_error(json.dumps(data) + "\nPOST BODY:\n" + request.body)
             #context = self.getContext(form)
             #return render(request, 'geopost/entry.html', context)
         else:
