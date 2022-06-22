@@ -131,7 +131,15 @@ $(document).ready(function () {
 		var wfsxml =  OL_OBJ.writeTrans([newpoint]);
 		wfsxmlInput.attr('value', wfsxml);
 		uuidInput.attr('value', OL_OBJ.entryUUID);
-		submitBtn.click();
+		console.log("OL_OBJ.entryFID:" + OL_OBJ.entryFID);
+		console.log("newpoint FID:" + newpoint.get('fid'));
+		console.log("form title:" + titleInput.val());
+		console.log("newpoint title:" + newpoint.get('title'));
+		console.log("form body:" + bodyInput.val());
+		console.log("newpoint title:" + newpoint.get('body'));
+		console.log("OL_OBJ.entryUUID:" + OL_OBJ.entryUUID);
+		console.log("newpoint uuid:" + newpoint.get('uuid'));
+		//submitBtn.click();
 	});
 	// Side bar opens/closes on click
 	$('#toolbar-toggle').on('click', function() {
