@@ -302,6 +302,7 @@ $(document).ready(function () {
 		$('#body').text(targetEntry.get('body'));
 		$('#info').modal('show');
 		OL_OBJ.retrievePhoto(targetEntry.get('uuid'), $('#photo'));
+		console.log("Feature ID: " + targetEntry.getId());
 	});
 	// DeOL_OBJ.select entry when modal is hidden
 	$('#info').on('hide.bs.modal', function (e) {
