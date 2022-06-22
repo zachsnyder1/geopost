@@ -349,14 +349,14 @@ $(document).ready(function () {
 	var drawActive = false;
 	var modActive = false;
 	// IF EDITING EXITING ENTRY:
-	if (OL_OBJ.entryFID()) {
+	if (OL_OBJ.entryFID) {
 		// HIDE DRAW BUTTON
 		drawbtn.hide();
 		// ADD FID TO FID INPUT ON FORM
-		fidInput.attr('value', OL_OBJ.entryFID());
+		fidInput.attr('value', OL_OBJ.entryFID);
 		// FIND FEATURE BEING EDITED:
 		OL_OBJ.entriessource.on('addfeature', function(e) {
-			if (e.feature.getId().split(".")[1] == OL_OBJ.entryFID()) {
+			if (e.feature.getId().split(".")[1] == OL_OBJ.entryFID) {
 				// move feature to tempentry source,
 				// also copy to the dummy temp source
 				// and reference by newpoint var
