@@ -1,6 +1,7 @@
 import base64
 import os
 import logging
+import json
 from django.http import HttpResponse, HttpResponseRedirect, FileResponse
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -98,7 +99,7 @@ class Entry(LoginRequiredMixin, GeoPostBase):
         logger.info("\ninstantiate Geopost form\n")
         # IF FORM VALIDATION ERROR
         if not form.is_valid():
-            return server_error(context)
+            return server_error(json.dumps(data))
             #context = self.getContext(form)
             #return render(request, 'geopost/entry.html', context)
         else:
