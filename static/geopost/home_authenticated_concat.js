@@ -307,8 +307,8 @@ $(document).ready(function () {
 		// to point to newly OL_OBJ.selected entry:
 		$('#edit-btn').on('click', function() {
 			var base_url = $('#geopost-entry').attr('data-geopost-entry');
-			var curr_fid = targetEntry.get('fid');
-			window.location = base_url + '?fid=' + curr_fid;
+			var curr_fid_num = targetEntry.getId().split(".")[1]; // just the integer
+			window.location = base_url + '?fid=' + curr_fid_num;
 		});
 		$('#delete-btn').on('click', function() {
 			OL_OBJ.wfsOperation = 'DELETE';

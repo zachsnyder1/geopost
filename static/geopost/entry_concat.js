@@ -349,14 +349,14 @@ $(document).ready(function () {
 	var drawActive = false;
 	var modActive = false;
 	// IF EDITING EXITING ENTRY:
-	if (OL_OBJ.entryFID) {
+	if (OL_OBJ.entryFID()) {
 		// HIDE DRAW BUTTON
 		drawbtn.hide();
 		// ADD FID TO FID INPUT ON FORM
-		fidInput.attr('value', OL_OBJ.entryFID);
+		fidInput.attr('value', OL_OBJ.entryFID());
 		// FIND FEATURE BEING EDITED:
 		OL_OBJ.entriessource.on('addfeature', function(e) {
-			if (e.feature.get('fid') == OL_OBJ.entryFID) {
+			if (e.feature.getId().split(".")[1] == OL_OBJ.entryFID()) {
 				// move feature to tempentry source,
 				// also copy to the dummy temp source
 				// and reference by newpoint var
@@ -407,14 +407,6 @@ $(document).ready(function () {
 		var wfsxml =  OL_OBJ.writeTrans([newpoint]);
 		wfsxmlInput.attr('value', wfsxml);
 		uuidInput.attr('value', OL_OBJ.entryUUID);
-		/*console.log("OL_OBJ.entryFID:" + OL_OBJ.entryFID);
-		console.log("newpoint FID:" + newpoint.get('fid'));
-		console.log("form title:" + titleInput.val());
-		console.log("newpoint title:" + newpoint.get('title'));
-		console.log("form body:" + bodyInput.val());
-		console.log("newpoint title:" + newpoint.get('body'));
-		console.log("OL_OBJ.entryUUID:" + OL_OBJ.entryUUID);
-		console.log("newpoint uuid:" + newpoint.get('uuid'));*/
 		submitBtn.click();
 	});
 	// Side bar opens/closes on click
