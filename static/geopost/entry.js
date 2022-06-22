@@ -65,7 +65,7 @@ $(document).ready(function () {
 	var titleInput = $('#title');
 	var bodyInput = $('#body');
 	var uuidInput = $('#uuid');
-	//var fidInput = $('#fid');
+	var fidInput = $('#fid');
 	var wfsxmlInput = $('#wfsxml');
 	var dummySubmitBtn = $('#dummy-submit');
 	var submitBtn = $('#submit-btn');
@@ -76,8 +76,6 @@ $(document).ready(function () {
 	if (OL_OBJ.entryFID) {
 		// HIDE DRAW BUTTON
 		drawbtn.hide();
-		// ADD FID TO FID INPUT ON FORM
-		//fidInput.attr('value', OL_OBJ.entryFID);
 		// FIND FEATURE BEING EDITED:
 		OL_OBJ.entriessource.on('addfeature', function(e) {
 			if (e.feature.getId().split(".")[1] == OL_OBJ.entryFID) {
@@ -93,6 +91,8 @@ $(document).ready(function () {
 				// POPULATE THE FORM WITH ITS ATTRIBUTES
 				titleInput.val(e.feature.get('title'));
 				bodyInput.val(e.feature.get('body'));
+				// ADD FID TO FID INPUT ON FORM
+				fidInput.val(e.feature.getId());
 				// STORE UUID
 				OL_OBJ.entryUUID = e.feature.get('uuid');
 			}
@@ -129,8 +129,8 @@ $(document).ready(function () {
 		newpoint.set('title', titleInput.val());
 		newpoint.set('body', bodyInput.val());
 		var wfsxml =  OL_OBJ.writeTrans([newpoint]);
-		wfsxmlInput.attr('value', wfsxml);
-		uuidInput.attr('value', OL_OBJ.entryUUID);
+		wfsxmlInput.val(wfsxml);
+		uuidInput.val(OL_OBJ.entryUUID);
 		submitBtn.click();
 	});
 	// Side bar opens/closes on click

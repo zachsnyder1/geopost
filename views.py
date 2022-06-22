@@ -83,13 +83,13 @@ class Entry(LoginRequiredMixin, GeoPostBase):
         # GET REQUEST DATA
         fid = request.POST.get('fid', False)
         uuid = request.POST.get('uuid', False)
-        title = request.POST.get('title', False)
+        title_text = request.POST.get('title', False)
         body = request.POST.get('body', False)
         photo = request.FILES.get('photo', False)  # FOR STORAGE
         wfsxml = request.POST.get('wfsxml', False)  # FOR GEOSERVER
         data = {
                 'uuid': uuid,
-                'title': title,
+                'title': title_text,
                 'body': body,
                 'wfsxml': wfsxml
         }
