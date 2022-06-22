@@ -65,7 +65,7 @@ $(document).ready(function () {
 	var titleInput = $('#title');
 	var bodyInput = $('#body');
 	var uuidInput = $('#uuid');
-	var fidInput = $('#fid');
+	//var fidInput = $('#fid');
 	var wfsxmlInput = $('#wfsxml');
 	var dummySubmitBtn = $('#dummy-submit');
 	var submitBtn = $('#submit-btn');
@@ -77,7 +77,7 @@ $(document).ready(function () {
 		// HIDE DRAW BUTTON
 		drawbtn.hide();
 		// ADD FID TO FID INPUT ON FORM
-		fidInput.attr('value', OL_OBJ.entryFID);
+		//fidInput.attr('value', OL_OBJ.entryFID);
 		// FIND FEATURE BEING EDITED:
 		OL_OBJ.entriessource.on('addfeature', function(e) {
 			if (e.feature.getId().split(".")[1] == OL_OBJ.entryFID) {
