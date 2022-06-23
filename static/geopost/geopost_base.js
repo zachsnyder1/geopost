@@ -42,7 +42,8 @@ OL_OBJ.entries = new ol.layer.Vector({
 OL_OBJ.view = new ol.View({
 	center: [0, 0],
 	zoom: 3,
-	maxZoom: 16
+	maxZoom: 16,
+	projection: 'EPSG:3857'
 });
 // DRAGPAN INTERACTION
 OL_OBJ.dragpan = new ol.interaction.DragPan();
