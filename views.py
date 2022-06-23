@@ -90,7 +90,7 @@ class Entry(LoginRequiredMixin, GeoPostBase):
         wfsxml = request.POST.get('wfsxml', False)  # FOR GEOSERVER
         data = {
                 'uuid': uuid,
-                'title': title_text,
+                'title_text': title_text,
                 'body': body,
                 'wfsxml': wfsxml
         }
@@ -99,7 +99,7 @@ class Entry(LoginRequiredMixin, GeoPostBase):
         logger.info("\ninstantiate Geopost form\n")
         # IF FORM VALIDATION ERROR
         if not form.is_valid():
-            return server_error(json.dumps(data) + "\nPOST BODY:\n" + request.body)
+            return server_error(request.body)
             #context = self.getContext(form)
             #return render(request, 'geopost/entry.html', context)
         else:
