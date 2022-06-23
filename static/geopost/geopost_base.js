@@ -21,7 +21,7 @@ OL_OBJ.tile = new ol.layer.Tile({
 OL_OBJ.entriessource = new ol.source.Vector({
 	url: OL_OBJ.GSDomain + '/geoserver' + OL_OBJ.featNs + '/ows?service=' +
 		'WFS&version=2.0.0&request=GetFeature&typeName=' + OL_OBJ.wrksp + 
-		':' + OL_OBJ.featType + '&srsname=EPSG:4326&outputFormat=' +
+		':' + OL_OBJ.featType + '&srsname=EPSG:3857&outputFormat=' +
 		'application/json',
 	format: new ol.format.GeoJSON()
 });
