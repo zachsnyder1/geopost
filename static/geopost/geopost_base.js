@@ -32,7 +32,10 @@ OL_OBJ.entries = new ol.layer.Vector({
 		image: new ol.style.Circle({
 			radius: 9,
 			fill: new ol.style.Fill({color: 'yellow'})
-		})
+	}),
+	format: new ol.format.GeoJSON({
+		defaultDataProjection: 'EPSG:3857' // added line
+    }),
 	})
 });
 // THE VIEW
